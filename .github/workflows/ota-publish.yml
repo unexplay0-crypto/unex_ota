@@ -1,0 +1,46 @@
+name: Publicar UNEX PLAY OTA (Owner backend)
+
+on:
+  repository_dispatch:
+    types: [unex-ota-publish, unex-ota-policy]
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: 'UUID de um job previamente autorizado no Supabase (sem credenciais)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: unex-ota-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'unexplay0-crypto/unex_ota'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      UNEX_OTA_BRIDGE_TOKEN: ${{ secrets.UNEX_OTA_BRIDGE_TOKEN }}
+      UNEX_OTA_BRIDGE_URL: ${{ vars.UNEX_OTA_BRIDGE_URL }}
+      OTA_JOB_ID: ${{ github.event.client_payload.job_id || inputs.job_id }}
+      OTA_EVENT_KIND: ${{ github.event.action }}
+      UNEX_OTA_PACKAGE_NAME: ${{ vars.UNEX_OTA_PACKAGE_NAME }}
+      UNEX_OTA_SIGNING_CERT_SHA256: ${{ vars.UNEX_OTA_SIGNING_CERT_SHA256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Disponibilizar ferramentas de validação Android
+        run: |
+          sdkmanager 'build-tools;35.0.0'
+          echo "$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_PATH"
+      - name: Publicar APK ou alterar política (sem expor credenciais)
+        run: node scripts/publish-ota.mjs
