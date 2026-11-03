@@ -1,0 +1,33 @@
+name: Validar manifesto OTA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'update.json'
+      - 'scripts/**'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'update.json'
+      - 'scripts/**'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar manifesto
+        run: node scripts/validate-update.mjs update.json
+      - name: Executar testes do contrato OTA
+        run: node --test tests/manifest.test.mjs
