@@ -1,0 +1,11 @@
+*.apk
+*.aab
+*.jks
+*.keystore
+*.key
+*.pem
+*.env
+.env*
+!.env.example
+node_modules/
+.tmp/
