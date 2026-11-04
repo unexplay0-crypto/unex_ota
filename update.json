@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "latestVersionCode": 14,
-  "latestVersionName": "1.13.0",
-  "minSupportedVersionCode": 1,
-  "apkUrl": "https://github.com/unexplay0-crypto/unex_ota/releases/download/v1.13.0/unex-play-v1.13.0.apk",
-  "sha256": "5d2a3cf43265a451e06223a516746f61504b5621383674964d2806af81237b17",
-  "apkSizeBytes": 21628384,
-  "releaseNotes": "Melhoria na estabilidade ",
-  "publishedAt": "2026-11-04T10:43:21.518Z"
+  "latestVersionCode": 15,
+  "latestVersionName": "1.14.0",
+  "minSupportedVersionCode": 15,
+  "apkUrl": "https://github.com/unexplay0-crypto/unex_ota/releases/download/v1.14.0/unex-play-v1.14.0.apk",
+  "sha256": "f85071b1baeee1cb64c76ffed872a7c05eafb977fe3a2c6701451525cabda250",
+  "apkSizeBytes": 21790144,
+  "releaseNotes": "Novo ",
+  "publishedAt": "2026-11-04T17:15:53.676Z"
 }
