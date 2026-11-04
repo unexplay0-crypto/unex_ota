@@ -39,8 +39,25 @@ jobs:
         with:
           node-version: '22'
       - name: Disponibilizar ferramentas de validação Android
+        shell: bash
         run: |
-          sdkmanager 'build-tools;35.0.0'
-          echo "$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_PATH"
+          set -euo pipefail
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          if [[ -z "$SDK_ROOT" || ! -d "$SDK_ROOT" ]]; then
+            echo "::error::Android SDK não está disponível neste runner"
+            exit 1
+          fi
+          BUILD_TOOLS="$SDK_ROOT/build-tools/35.0.0"
+          if [[ ! -x "$BUILD_TOOLS/aapt" || ! -x "$BUILD_TOOLS/apksigner" ]]; then
+            SDKMANAGER="$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+            if [[ ! -x "$SDKMANAGER" ]]; then
+              echo "::error::sdkmanager ausente em $SDKMANAGER"
+              exit 1
+            fi
+            "$SDKMANAGER" --install 'build-tools;35.0.0'
+          fi
+          test -x "$BUILD_TOOLS/aapt"
+          test -x "$BUILD_TOOLS/apksigner"
+          echo "$BUILD_TOOLS" >> "$GITHUB_PATH"
       - name: Publicar APK ou alterar política (sem expor credenciais)
         run: node scripts/publish-ota.mjs
