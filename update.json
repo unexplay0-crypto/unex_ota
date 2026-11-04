@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "enabled": false,
-  "latestVersionCode": 0,
-  "latestVersionName": null,
-  "minSupportedVersionCode": 0,
-  "apkUrl": null,
-  "sha256": null,
-  "apkSizeBytes": null,
-  "releaseNotes": "",
-  "publishedAt": null
+  "enabled": true,
+  "latestVersionCode": 14,
+  "latestVersionName": "1.13.0",
+  "minSupportedVersionCode": 1,
+  "apkUrl": "https://github.com/unexplay0-crypto/unex_ota/releases/download/v1.13.0/unex-play-v1.13.0.apk",
+  "sha256": "5d2a3cf43265a451e06223a516746f61504b5621383674964d2806af81237b17",
+  "apkSizeBytes": 21628384,
+  "releaseNotes": "Melhoria na estabilidade ",
+  "publishedAt": "2026-11-04T10:43:21.518Z"
 }
