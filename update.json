@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "enabled": true,
-  "latestVersionCode": 30,
-  "latestVersionName": "1.20.9",
+  "latestVersionCode": 32,
+  "latestVersionName": "1.21.1",
   "minSupportedVersionCode": 1,
-  "apkUrl": "https://github.com/unexplay0-crypto/unex_ota/releases/download/v1.20.9/unex-play-v1.20.9.apk",
-  "sha256": "5f3de6155b3e23e1f9297ed9466a2e40092359e0d065058796d22a4a953300ce",
-  "apkSizeBytes": 22085060,
+  "apkUrl": "https://github.com/unexplay0-crypto/unex_ota/releases/download/v1.21.1/unex-play-v1.21.1.apk",
+  "sha256": "0d3aaeda71f3ed314b472935c49d97d958bcc84ca2c11d16ee674dddf7570775",
+  "apkSizeBytes": 22365636,
   "releaseNotes": "",
-  "publishedAt": "2026-11-10T20:32:33.946Z"
+  "publishedAt": "2026-11-11T15:18:41.150Z"
 }
